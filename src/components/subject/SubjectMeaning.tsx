@@ -91,7 +91,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                     paddingBottom: 12,
                 }}
             >
-                <Text selectable style={{ color: Colors.LESSON_GREY }}>
+                <Text style={{ color: Colors.LESSON_GREY }}>
                     <RichText text={meaning_explanation} />
                 </Text>
             </View>
