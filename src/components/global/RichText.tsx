@@ -23,7 +23,6 @@ const RichText: React.FC<RichTextProps> = ({ text }) => {
 
     return (
         <Text
-            selectable
             style={{
                 fontFamily: "NotoSans-Regular",
                 fontSize: 14,
