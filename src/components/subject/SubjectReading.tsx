@@ -202,7 +202,7 @@ const SubjectReading: React.FC<SubjectReadingProps> = ({
                     paddingBottom: 12,
                 }}
             >
-                <Text selectable style={{ color: Colors.LESSON_GREY }}>
+                <Text style={{ color: Colors.LESSON_GREY }}>
                     <RichText text={reading_explanation} />
                 </Text>
             </View>
