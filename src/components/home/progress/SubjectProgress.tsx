@@ -37,7 +37,7 @@ const SubjectProgress: React.FC<SubjectProps> = ({ type, subject }) => {
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const character_color =
-        subject.srs_stage !== 0 ? type_colors[type] : type_colors.default;
+        subject.srs_stage === 0 ? type_colors.default : type_colors[type];
 
     const goToSubject = () => {
         const converted_subject = C_Utils.convertSubject(subject)?.[0];
