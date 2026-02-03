@@ -32,7 +32,7 @@ const SubjectProgressGrid: React.FC<SubjectProgressGrid> = ({
     level,
     type,
 }) => {
-    const [subjects, setSubjects] = useState([]);
+    const [subjects, setSubjects] = useState<RawSubjectProps[]>([]);
 
     useEffect(() => {
         //  Getting the appropriate functions and storing them as pointers
@@ -61,8 +61,8 @@ const SubjectProgressGrid: React.FC<SubjectProgressGrid> = ({
                                 learned.data?.passed_at
                                     ? 5
                                     : learned.data.srs_stage,
-                            ]
-                        )
+                            ],
+                        ),
                     );
                     const all_subjects = all_subjects_raw.data
                         .map((subject: RawSubjectProps) => ({
@@ -71,7 +71,7 @@ const SubjectProgressGrid: React.FC<SubjectProgressGrid> = ({
                         }))
                         .sort(
                             (a: RawSubjectProps, b: RawSubjectProps) =>
-                                b.srs_stage - a.srs_stage
+                                b.srs_stage - a.srs_stage,
                         );
 
                     setSubjects(all_subjects);
@@ -96,9 +96,9 @@ const SubjectProgressGrid: React.FC<SubjectProgressGrid> = ({
                 {type.charAt(0).toUpperCase() + type.slice(1)}
             </Text>
             <View style={{ ...ProgressStyles.grid, borderWidth: 0 }}>
-                {subjects.map((subject, index) => (
+                {subjects.map((subject) => (
                     <SubjectProgress
-                        key={index}
+                        key={subject.id}
                         type={type}
                         subject={subject}
                     />
