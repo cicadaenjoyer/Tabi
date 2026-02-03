@@ -33,9 +33,8 @@ const RichText: React.FC<RichTextProps> = ({ text }) => {
                 const RM_REGEX =
                     /<\/?(?:vocabulary|kanji|radical|reading|em)>/g;
                 const word_type =
-                    e
-                        .match(RM_REGEX)?.[0]
-                        ?.replace(/[<>]/g, "")
+                    RM_REGEX.exec(e)?.[0]
+                        ?.replaceAll(/[<>]/g, "")
                         ?.toUpperCase() || null;
                 const background_fill = word_type
                     ? Colors[`${word_type}_HIGHLIGHT_BACK`]
@@ -56,7 +55,7 @@ const RichText: React.FC<RichTextProps> = ({ text }) => {
                         }}
                         key={idx}
                     >
-                        {e.replace(RM_REGEX, "")}
+                        {e.replaceAll(RM_REGEX, "")}
                     </Text>
                 );
             })}
