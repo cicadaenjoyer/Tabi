@@ -15,7 +15,9 @@ async function getAllSubjects(query = "") {
             headers: headers,
         });
 
-        if (!response.ok) {
+        if (response.ok) {
+            return await response.json();
+        } else {
             switch (response.status) {
                 case 401:
                     throw new Error("Unauthorized: Invalid API token");
@@ -23,11 +25,9 @@ async function getAllSubjects(query = "") {
                     throw new Error("Not Found: Endpoint does not exist");
                 default:
                     throw new Error(
-                        `API Error: ${response.status} ${response.statusText}`
+                        `API Error: ${response.status} ${response.statusText}`,
                     );
             }
-        } else {
-            return await response.json();
         }
     }
 }

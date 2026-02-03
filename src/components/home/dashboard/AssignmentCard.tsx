@@ -65,14 +65,14 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
         const subject_to_assignment_map = new Map(
             assignments.map((assignment) => {
                 return [assignment.data.subject_id, assignment.id];
-            })
+            }),
         );
 
         const subjects_with_assignments = subjects.map(
             (subject: SubjectProps) => ({
                 ...subject,
                 assignment_id: subject_to_assignment_map.get(subject.id),
-            })
+            }),
         );
 
         navigation.navigate("Review", {
@@ -95,14 +95,14 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
         const subject_to_assignment_map = new Map(
             assignments.map((assignment) => {
                 return [assignment.data.subject_id, assignment.id];
-            })
+            }),
         );
 
         const subjects_with_assignments = subjects.map(
             (subject: SubjectProps) => ({
                 ...subject,
                 assignment_id: subject_to_assignment_map.get(subject.id),
-            })
+            }),
         );
 
         navigation.navigate("Lesson", {
@@ -143,9 +143,9 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
         <Pressable
             style={[
                 styles.assignment,
-                !no_assignments
-                    ? { backgroundColor: AssignmentStyles.primary_color }
-                    : { backgroundColor: "gray" },
+                no_assignments
+                    ? { backgroundColor: "gray" }
+                    : { backgroundColor: AssignmentStyles.primary_color },
             ]}
             onPress={AssignmentStyles.goTo}
             disabled={no_assignments}
@@ -154,9 +154,9 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
             <View style={styles.assignment_icon}>
                 <Image
                     source={
-                        !no_assignments
-                            ? AssignmentStyles.image
-                            : AssignmentStyles.image_no_assignments
+                        no_assignments
+                            ? AssignmentStyles.image_no_assignments
+                            : AssignmentStyles.image
                     }
                     style={{
                         width: width * 0.265,
@@ -172,17 +172,17 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
                     {label} {no_assignments ? 0 : assignments.length}
                 </Text>
                 <Text style={styles.assignment_subheader}>
-                    {!no_assignments
-                        ? AssignmentStyles.description
-                        : AssignmentStyles.description_no_assignments}
+                    {no_assignments
+                        ? AssignmentStyles.description_no_assignments
+                        : AssignmentStyles.description}
                 </Text>
                 {!no_assignments && (
                     <View
                         style={{
                             ...styles.assignment_button_container,
-                            borderColor: !no_assignments
-                                ? AssignmentStyles.accent_color
-                                : "black",
+                            borderColor: no_assignments
+                                ? "black"
+                                : AssignmentStyles.accent_color,
                         }}
                     >
                         <Text style={styles.assignment_button_text}>

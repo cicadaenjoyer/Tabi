@@ -19,7 +19,7 @@ async function putAssignment(assignment: ReviewProps) {
             {
                 method: "PUT",
                 headers: headers,
-            }
+            },
         );
 
         if (!response.ok) {
@@ -30,7 +30,7 @@ async function putAssignment(assignment: ReviewProps) {
                     throw new Error("Not Found: Endpoint does not exist");
                 default:
                     throw new Error(
-                        `API Error: ${response.status} ${response.statusText}`
+                        `API Error: ${response.status} ${response.statusText}`,
                     );
             }
         }
@@ -50,7 +50,9 @@ async function getAssignments(query: string = "") {
             headers: headers,
         });
 
-        if (!response.ok) {
+        if (response.ok) {
+            return await response.json();
+        } else {
             switch (response.status) {
                 case 401:
                     throw new Error("Unauthorized: Invalid API token");
@@ -58,18 +60,16 @@ async function getAssignments(query: string = "") {
                     throw new Error("Not Found: Endpoint does not exist");
                 default:
                     throw new Error(
-                        `API Error: ${response.status} ${response.statusText}`
+                        `API Error: ${response.status} ${response.statusText}`,
                     );
             }
-        } else {
-            return await response.json();
         }
     }
 }
 
 async function getAvailableLessons() {
     const assignments = await getAssignments(
-        "?immediately_available_for_lessons=true"
+        "?immediately_available_for_lessons=true",
     );
 
     return {
