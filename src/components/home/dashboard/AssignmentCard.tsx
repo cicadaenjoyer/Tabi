@@ -26,16 +26,12 @@ import type { RootStackParamList } from "../../../navigation/navigation";
 import { DashboardStyles as styles } from "../../../styles/home/dashboard.styles";
 import { Colors } from "../../../constants/colors";
 
-// API
-import { SubjectsAPI } from "../../../api/subjects";
-
 // Utils
 import { C_Utils } from "../../../utils/convert";
 
 // Interfaces
 import { UserProps } from "../../../interfaces/User";
 import { RawAssignmentProps } from "../../../interfaces/RawAssignment";
-import { SubjectProps } from "../../../interfaces/Subject";
 
 interface AssignmentProps {
     label: "Lessons" | "Reviews";
@@ -53,27 +49,8 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
     const { width, height } = useWindowDimensions();
 
     const goToReviews = async () => {
-        const review_ids = assignments
-            .map((assignment) => {
-                return assignment.data.subject_id;
-            })
-            .join(",");
-        const subjects_raw = await SubjectsAPI.getSubjectsWithId(review_ids);
-        const subjects = C_Utils.convertSubjects(subjects_raw.data);
-
-        // Creating a map to assign assignment ids to subjects
-        const subject_to_assignment_map = new Map(
-            assignments.map((assignment) => {
-                return [assignment.data.subject_id, assignment.id];
-            }),
-        );
-
-        const subjects_with_assignments = subjects.map(
-            (subject: SubjectProps) => ({
-                ...subject,
-                assignment_id: subject_to_assignment_map.get(subject.id),
-            }),
-        );
+        const subjects_with_assignments =
+            await C_Utils.convertReviewsToSubjects(assignments);
 
         navigation.navigate("Review", {
             subjects: subjects_with_assignments,
@@ -82,28 +59,8 @@ const AssignmentCard: React.FC<AssignmentProps> = ({
     };
     const goToLessons = async () => {
         const batch_size = 15; // NOTE: Temporary, swap for user pref in future
-
-        const review_ids = assignments
-            .map((assignment) => {
-                return assignment.data.subject_id;
-            })
-            .join(",");
-        const subjects_raw = await SubjectsAPI.getSubjectsWithId(review_ids);
-        const subjects = C_Utils.convertSubjects(subjects_raw.data);
-
-        // Creating a map to assign assignment ids to subjects
-        const subject_to_assignment_map = new Map(
-            assignments.map((assignment) => {
-                return [assignment.data.subject_id, assignment.id];
-            }),
-        );
-
-        const subjects_with_assignments = subjects.map(
-            (subject: SubjectProps) => ({
-                ...subject,
-                assignment_id: subject_to_assignment_map.get(subject.id),
-            }),
-        );
+        const subjects_with_assignments =
+            await C_Utils.convertReviewsToSubjects(assignments);
 
         navigation.navigate("Lesson", {
             subjects: subjects_with_assignments.slice(0, batch_size),

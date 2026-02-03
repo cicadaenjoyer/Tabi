@@ -8,8 +8,37 @@
 // Styling
 import { Colors } from "../constants/colors";
 
+// API
+import { SubjectsAPI } from "../api/subjects";
+
 // Interfaces
+import { RawAssignmentProps } from "../interfaces/RawAssignment";
+import { SubjectProps } from "../interfaces/Subject";
 import { RawSubjectProps } from "../interfaces/RawSubject";
+
+async function convertReviewsToSubjects(assignments: RawAssignmentProps[]) {
+    const review_ids = assignments
+        .map((assignment) => {
+            return assignment.data.subject_id;
+        })
+        .join(",");
+    const subjects_raw = await SubjectsAPI.getSubjectsWithId(review_ids);
+    const subjects = C_Utils.convertSubjects(subjects_raw.data);
+
+    // Creating a map to assign assignment ids to subjects
+    const subject_to_assignment_map = new Map(
+        assignments.map((assignment) => {
+            return [assignment.data.subject_id, assignment.id];
+        }),
+    );
+
+    const subjects_with_assignments = subjects.map((subject: SubjectProps) => ({
+        ...subject,
+        assignment_id: subject_to_assignment_map.get(subject.id),
+    }));
+
+    return subjects_with_assignments;
+}
 
 function convertSubject(subject_raw: RawSubjectProps) {
     const converted_subject = {
@@ -35,8 +64,8 @@ function convertSubject(subject_raw: RawSubjectProps) {
                 self.findIndex(
                     (a) =>
                         a.metadata.voice_actor_id ===
-                        audio.metadata.voice_actor_id
-                )
+                        audio.metadata.voice_actor_id,
+                ),
         ),
         context_sentences: subject_raw.data.context_sentences,
         related_subject_ids: [
@@ -75,4 +104,5 @@ function convertSubjects(subjects_raw: RawSubjectProps[]) {
 export const C_Utils = {
     convertSubject,
     convertSubjects,
+    convertReviewsToSubjects,
 };
