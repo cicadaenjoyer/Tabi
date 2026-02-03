@@ -121,7 +121,7 @@ const SubjectReading: React.FC<SubjectReadingProps> = ({
                                     justifyContent: "center",
                                 }}
                             >
-                                {reading.type && (
+                                {!!reading.type && (
                                     <Text
                                         style={{
                                             ...styles.reading,
