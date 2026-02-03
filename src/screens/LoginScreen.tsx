@@ -17,8 +17,8 @@ import {
     Text,
     Image,
     Pressable,
+    useWindowDimensions,
 } from "react-native";
-import { useWindowDimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/navigation";
