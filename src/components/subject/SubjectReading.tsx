@@ -115,7 +115,7 @@ const SubjectReading: React.FC<SubjectReadingProps> = ({
                     subject_readings.map((reading, ridx) => {
                         return (
                             <View
-                                key={ridx}
+                                key={reading.value + ridx}
                                 style={{
                                     alignItems: "center",
                                     justifyContent: "center",
@@ -168,10 +168,10 @@ const SubjectReading: React.FC<SubjectReadingProps> = ({
                     </Text>
                 )}
             </View>
-            {pronunciations.map((pronunciation, pidx) => {
+            {pronunciations.map((pronunciation) => {
                 return (
                     <Pressable
-                        key={pidx}
+                        key={pronunciation.url}
                         onPress={() =>
                             playPronunciationAudio(pronunciation.url)
                         }

@@ -88,26 +88,26 @@ const LessonScreen = (nav: {
 
     const lesson_tabs = {
         radical: [
-            { key: "meaning", label: "Name" },
-            { key: "kanji", label: "Examples" },
+            { key: "meaning", label: "Name", id: 0 },
+            { key: "kanji", label: "Examples", id: 1 },
         ],
         kanji: [
-            { key: "radicals", label: "Radicals" },
-            { key: "meaning", label: "Meaning" },
-            { key: "reading", label: "Reading" },
-            { key: "vocabulary", label: "Examples" },
+            { key: "radicals", label: "Radicals", id: 0 },
+            { key: "meaning", label: "Meaning", id: 1 },
+            { key: "reading", label: "Reading", id: 2 },
+            { key: "vocabulary", label: "Examples", id: 3 },
         ],
         vocabulary: [
-            { key: "kanji", label: "Kanji Composition" },
-            { key: "meaning", label: "Meaning" },
-            { key: "reading", label: "Reading" },
-            { key: "context", label: "Context" },
+            { key: "kanji", label: "Kanji Composition", id: 0 },
+            { key: "meaning", label: "Meaning", id: 1 },
+            { key: "reading", label: "Reading", id: 2 },
+            { key: "context", label: "Context", id: 3 },
         ],
         kana_vocabulary: [
-            { key: "kanji", label: "Kanji Composition" },
-            { key: "meaning", label: "Meaning" },
-            { key: "reading", label: "Reading" },
-            { key: "context", label: "Context" },
+            { key: "kanji", label: "Kanji Composition", id: 0 },
+            { key: "meaning", label: "Meaning", id: 1 },
+            { key: "reading", label: "Reading", id: 2 },
+            { key: "context", label: "Context", id: 3 },
         ],
     };
 
@@ -311,12 +311,12 @@ const LessonScreen = (nav: {
                     },
                 ]}
             >
-                {lesson_tabs[currentSubject.type].map((tab, idx) => {
+                {lesson_tabs[currentSubject.type].map((tab) => {
                     const is_active = activeTab === tab.key;
 
                     return (
                         <Pressable
-                            key={idx}
+                            key={tab.id}
                             onPress={() => setActiveTab(tab.key)}
                         >
                             <Text
