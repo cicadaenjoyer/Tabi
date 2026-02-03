@@ -6,13 +6,7 @@
  */
 
 import React, { useState } from "react";
-import {
-    View,
-    Image,
-    ScrollView,
-    RefreshControl,
-    Pressable,
-} from "react-native";
+import { View, ScrollView, RefreshControl, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFocusEffect } from "@react-navigation/native";
 import FontAwesome from "@react-native-vector-icons/fontawesome";
@@ -85,7 +79,7 @@ const HomeScreen = () => {
             fetchLessons();
             fetchReviews();
             setLoading(false);
-        }, [])
+        }, []),
     );
     const onRefresh = React.useCallback(async () => {
         setRefreshing(true);

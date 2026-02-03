@@ -5,9 +5,14 @@
  */
 
 import React, { useState, useEffect, useRef } from "react";
-import { Text, View, ScrollView, Button } from "react-native";
+import {
+    Text,
+    View,
+    ScrollView,
+    Button,
+    useWindowDimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useWindowDimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/navigation";
@@ -84,19 +89,20 @@ const ReviewScreen = (nav: {
         s_type: "review" | "lesson",
         quiz_state: QuizState,
     ): ReviewProps => {
-        // const timestamp = new Date().toISOString();
         const review = Object.create({});
 
         if (subject) {
             switch (s_type) {
                 case "lesson":
                     review.assignment_id = subject?.assignment_id;
+                    break;
                 case "review":
                     review.assignment_id = subject?.assignment_id;
                     review.incorrect_meaning_answers =
                         quiz_state.num_meaning_incorrect;
                     review.incorrect_reading_answers =
                         quiz_state.num_reading_incorrect;
+                    break;
             }
         } else {
             console.error("Error: Null Subject when creating review");

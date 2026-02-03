@@ -17,8 +17,8 @@ import {
     Text,
     Image,
     Pressable,
+    useWindowDimensions,
 } from "react-native";
-import { useWindowDimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/navigation";
@@ -38,7 +38,7 @@ const LoginScreen = () => {
     const [gravatarEmail, setGravatarEmail] = useState("");
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-    const { width, height } = useWindowDimensions();
+    const { height } = useWindowDimensions();
 
     const goToSignUp = async (url: string) => {
         const supported = await Linking.canOpenURL(url);

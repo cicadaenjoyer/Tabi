@@ -5,9 +5,14 @@
  *  five
  */
 import React, { useState, useEffect } from "react";
-import { Text, View, ScrollView, Pressable } from "react-native";
+import {
+    Text,
+    View,
+    ScrollView,
+    Pressable,
+    useWindowDimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useWindowDimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/navigation";

@@ -15,7 +15,6 @@ import { View, Text } from "react-native";
 
 // Styling
 import { SubjectSlugStyles } from "../../styles/subject/subject.definition.styles";
-import { Colors } from "../../constants/colors";
 
 interface SubjectSlugProps {
     fill: string;
