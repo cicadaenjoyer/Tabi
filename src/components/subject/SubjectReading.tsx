@@ -206,7 +206,7 @@ const SubjectReading: React.FC<SubjectReadingProps> = ({
                     <RichText text={reading_explanation} />
                 </Text>
             </View>
-            {reading_hint && (
+            {!!reading_hint && (
                 <View style={styles.hint}>
                     <Text style={{ fontFamily: "NotoSans-Bold", fontSize: 14 }}>
                         Hints
