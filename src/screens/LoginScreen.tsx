@@ -38,7 +38,7 @@ const LoginScreen = () => {
     const [gravatarEmail, setGravatarEmail] = useState("");
     const navigation =
         useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-    const { width, height } = useWindowDimensions();
+    const { height } = useWindowDimensions();
 
     const goToSignUp = async (url: string) => {
         const supported = await Linking.canOpenURL(url);
