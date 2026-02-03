@@ -9,6 +9,7 @@ A mobile version of WaniKani built with React Native for iOS and Android.
 ![GitHub last commit](https://img.shields.io/github/last-commit/cicadaenjoyer/Tabi)
 ![GitHub issues](https://img.shields.io/github/issues/cicadaenjoyer/Tabi)
 ![GitHub license](https://img.shields.io/github/license/cicadaenjoyer/Tabi)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cicadaenjoyer_Tabi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cicadaenjoyer_Tabi)
 
 ## Project Overview
 
