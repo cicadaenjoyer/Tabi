@@ -33,7 +33,6 @@ const SubjectDefinition: React.FC<{ subject: SubjectProps }> = ({
     const subject_type = subject.type;
     const subject_slug =
         subject.type === "radical" ? subject.characters?.[0] : subject.slug;
-    const subject_image = subject.character_image;
     const subject_readings = subject?.readings || "";
     const subject_main_meaning =
         subject?.meanings?.find((r) => r.primary)?.meaning || "";
@@ -56,7 +55,7 @@ const SubjectDefinition: React.FC<{ subject: SubjectProps }> = ({
         vocabulary: new Array(),
     });
 
-    let subject_color = Colors.BASIC_BLACK;
+    let subject_color;
     switch (subject.type) {
         case "radical":
             subject_color = Colors.RADICAL_BLUE;
@@ -76,20 +75,20 @@ const SubjectDefinition: React.FC<{ subject: SubjectProps }> = ({
     useEffect(() => {
         const fetchSubjects = async () => {
             const subjects_raw = await SubjectsAPI.getSubjectsWithId(
-                related_subject_ids.join(",")
+                related_subject_ids.join(","),
             );
             const subjects_formatted = C_Utils.convertSubjects(
-                subjects_raw.data
+                subjects_raw.data,
             );
             const related_subjects = {
                 radicals: subjects_formatted.filter(
-                    (subject) => subject.type === "radical"
+                    (subject) => subject.type === "radical",
                 ),
                 kanji: subjects_formatted.filter(
-                    (subject) => subject.type === "kanji"
+                    (subject) => subject.type === "kanji",
                 ),
                 vocabulary: subjects_formatted.filter(
-                    (subject) => subject.type === "vocabulary"
+                    (subject) => subject.type === "vocabulary",
                 ),
             };
 
@@ -123,7 +122,7 @@ const SubjectDefinition: React.FC<{ subject: SubjectProps }> = ({
                 )}
 
             {/* Subject Detailed Primary/Alt Meanings, Explanation, & Hint */}
-            {subject_main_meaning && (
+            {!!subject_main_meaning && (
                 <SubjectMeaning
                     type={subject_type}
                     main_meaning={subject_main_meaning}

@@ -26,9 +26,9 @@ const LessonNavigator: React.FC<{
     return (
         <View style={styles.navigator}>
             {/* Subjects */}
-            {subjects.map((subject, idx) => {
+            {subjects.map((subject) => {
                 return (
-                    <View key={idx}>
+                    <View key={subject.id}>
                         <SubjectSelector
                             subject={subject}
                             onSelect={onSelectSubject}

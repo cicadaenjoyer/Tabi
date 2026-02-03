@@ -9,12 +9,7 @@
  *
  * @returns {JSX.Element}
  */
-import React, {
-    useState,
-    useRef,
-    forwardRef,
-    useImperativeHandle,
-} from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { TextInput, TextInputProps } from "react-native";
 import { isHiragana, toHiragana, isKatakana, toKatakana } from "wanakana";
 
@@ -42,7 +37,7 @@ const WanaKanaInput = forwardRef<WanaKanaInputRef, WKIProps>(
         const handleChangeText = (input: string) => {
             if (props.q_type === "reading") {
                 const is_katakana = isKatakana(
-                    props.answers?.[0]?.reading || ""
+                    props.answers?.[0]?.reading || "",
                 );
                 const textConverter = is_katakana ? toKatakana : toHiragana;
                 const converted_text = textConverter(input, { IMEMode: true });
@@ -61,14 +56,14 @@ const WanaKanaInput = forwardRef<WanaKanaInputRef, WKIProps>(
 
                 const answer = props.answers.find(
                     (a) =>
-                        a[A_TYPE]?.toLowerCase() === text.toLowerCase().trim()
+                        a[A_TYPE]?.toLowerCase() === text.toLowerCase().trim(),
                 );
                 return !!answer;
             },
             isValid: () => {
                 if (props.q_type === "reading") {
                     const is_katakana = isKatakana(
-                        props.answers?.[0]?.reading || ""
+                        props.answers?.[0]?.reading || "",
                     );
                     const syntaxChecker = is_katakana ? isKatakana : isHiragana;
 
@@ -90,7 +85,7 @@ const WanaKanaInput = forwardRef<WanaKanaInputRef, WKIProps>(
                 onChangeText={handleChangeText}
             />
         );
-    }
+    },
 );
 
 export default WanaKanaInput;

@@ -36,10 +36,10 @@ const SubjectContext: React.FC<SubjectContextProps> = ({
 
             {/* Subject Context Sentences */}
             <Text style={styles.context_sentence}>Context Sentences</Text>
-            {context_sentences.map((c_sent, idx) => {
+            {context_sentences.map((c_sent) => {
                 return (
                     <View
-                        key={idx}
+                        key={c_sent.ja + c_sent.en}
                         style={{
                             paddingBottom: 12,
                         }}

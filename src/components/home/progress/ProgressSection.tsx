@@ -7,7 +7,7 @@
  * @module components/home/progress/ProgressSection
  */
 
-import React, { useReducer } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 
 // Styling

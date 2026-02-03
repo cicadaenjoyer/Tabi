@@ -15,7 +15,6 @@ import type { RootStackParamList } from "../../navigation/navigation";
 
 // Styling
 import { SubjectCardStyles as styles } from "../../styles/subject/subject.card.styles";
-import { Colors } from "../../constants/colors";
 
 // Interfaces
 import { SubjectProps } from "../../interfaces/Subject";
@@ -53,12 +52,12 @@ const SubjectCard: React.FC<{ subject: SubjectProps }> = ({ subject }) => {
             </View>
 
             {/* Main Reading */}
-            {subject_main_reading && (
+            {!!subject_main_reading && (
                 <Text style={styles.reading}>{subject_main_reading}</Text>
             )}
 
             {/* Main Meaning */}
-            {subject_main_meaning && (
+            {!!subject_main_meaning && (
                 <Text style={styles.meaning}>{subject_main_meaning}</Text>
             )}
         </Pressable>

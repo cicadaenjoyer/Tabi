@@ -47,9 +47,9 @@ const RelatedSubjects: React.FC<RelatedSubjectsProps> = ({
 
             {/* Related Subjects */}
             <View style={styles.grid}>
-                {subjects.map((subject, idx) => {
+                {subjects.map((subject) => {
                     return (
-                        <View key={idx}>
+                        <View key={subject.id}>
                             <SubjectCard subject={subject} />
                         </View>
                     );
