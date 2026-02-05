@@ -65,7 +65,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                 </Text>
             </View>
 
-            {alt_meanings && (
+            {!!alt_meanings && (
                 <View style={{ flexDirection: "row" }}>
                     <Text style={styles.meaning}>Alternatives{"\t\t"}</Text>
                     <Text
@@ -95,7 +95,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                     <RichText text={meaning_explanation} />
                 </Text>
             </View>
-            {meaning_hint && (
+            {!!meaning_hint && (
                 <View style={styles.hint}>
                     <Text style={{ ...styles.meaning, color: "inherit" }}>
                         Hints
