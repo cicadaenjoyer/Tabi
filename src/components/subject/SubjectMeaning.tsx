@@ -58,6 +58,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                     selectable
                     style={{
                         ...styles.meaning,
+                        width: "85%",
                         color: Colors.BASIC_BLACK,
                     }}
                 >
@@ -65,13 +66,14 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                 </Text>
             </View>
 
-            {alt_meanings && (
+            {!!alt_meanings && (
                 <View style={{ flexDirection: "row" }}>
                     <Text style={styles.meaning}>Alternatives{"\t\t"}</Text>
                     <Text
                         selectable
                         style={{
                             ...styles.meaning,
+                            width: "80%",
                             fontFamily: "NotoSans-Regular",
                         }}
                     >
@@ -95,7 +97,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                     <RichText text={meaning_explanation} />
                 </Text>
             </View>
-            {meaning_hint && (
+            {!!meaning_hint && (
                 <View style={styles.hint}>
                     <Text style={{ ...styles.meaning, color: "inherit" }}>
                         Hints

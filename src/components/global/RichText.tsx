@@ -53,7 +53,7 @@ const RichText: React.FC<RichTextProps> = ({ text }) => {
                                     ? "NotoSans-Italic"
                                     : "NotoSans-Regular",
                         }}
-                        key={e}
+                        key={e + idx}
                     >
                         {e.replaceAll(RM_REGEX, "")}
                     </Text>
