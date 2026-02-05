@@ -58,6 +58,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                     selectable
                     style={{
                         ...styles.meaning,
+                        width: "85%",
                         color: Colors.BASIC_BLACK,
                     }}
                 >
@@ -72,6 +73,7 @@ const SubjectMeaning: React.FC<SubjectMeaningProps> = ({
                         selectable
                         style={{
                             ...styles.meaning,
+                            width: "80%",
                             fontFamily: "NotoSans-Regular",
                         }}
                     >
