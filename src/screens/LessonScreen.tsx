@@ -295,7 +295,6 @@ const LessonScreen = (nav: {
                         : currentSubject.slug}
                 </Text>
                 <Text
-                    selectable
                     style={{
                         ...styles.subject_meaning,
                         fontSize: height * 0.02,
